@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {WebsocketService} from './websocket.service';
 import {Observable} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  private urlEndpoint = 'http://localhost:5000';
+  private urlEndpoint = environment.restUrl;
 
   constructor(
     private wsService: WebsocketService,
