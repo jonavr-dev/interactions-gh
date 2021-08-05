@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {WebsocketService} from '../../services/websocket.service';
 import {ChatService} from '../../services/chat.service';
 import {Subscription} from 'rxjs';
 
@@ -14,7 +13,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   messages: any[] = [];
   chatWindow: HTMLElement;
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService) { this.messages = []; }
 
   ngOnInit(): void {
     this.chatWindow = document.getElementById('chat-messages');
@@ -27,6 +26,21 @@ export class ChatComponent implements OnInit, OnDestroy {
           this.chatWindow.scrollTop = this.chatWindow.scrollHeight;
         }, 0);
       });
+
+    this.getMessages();
+  }
+
+  getMessages(): void {
+    this.chatService.getMessages()
+        .subscribe(response => {
+          if (response.ok) {
+            console.log('Service messages ===> ', response.messages);
+            this.messages = response.messages;
+            setTimeout(() => {
+              this.chatWindow.scrollTop = this.chatWindow.scrollHeight;
+            }, 0);
+          }
+        });
   }
 
   ngOnDestroy(): void {

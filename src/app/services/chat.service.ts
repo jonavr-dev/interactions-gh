@@ -17,7 +17,7 @@ export class ChatService {
 
   sendMessage(message: string): void {
     const payload = {
-      de: this.wsService.getUser().name,
+      from: this.wsService.getUser().name,
       body: message
     };
 
@@ -55,5 +55,9 @@ export class ChatService {
 
   getReactions(): Observable<any> {
     return this.http.get<any>(this.urlEndpoint + '/reactions');
+  }
+
+  getMessages(): Observable<any> {
+    return this.http.get<any>(this.urlEndpoint + '/messages');
   }
 }
