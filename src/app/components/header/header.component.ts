@@ -10,15 +10,18 @@ export class HeaderComponent implements OnInit {
   @Output() showAction = new EventEmitter<boolean>();
   showList = true;
   avatars = [
-    'assets/animals_01.jpg',
-    'assets/animals_02.jpg',
-    'assets/animals_03.jpg',
-    'assets/animals_04.jpg',
-    'assets/animals_05.jpg',
-    'assets/animals_06.jpg',
-    'assets/animals_07.jpg',
-    'assets/animals_08.jpg',
-    'assets/animals_09.jpg'
+    'assets/01.png',
+    'assets/02.png',
+    'assets/03.png',
+    'assets/04.png',
+    'assets/05.png',
+    'assets/06.png',
+    'assets/07.png',
+    'assets/08.png',
+    'assets/09.png',
+    'assets/10.png',
+    'assets/11.png',
+    'assets/12.png'
   ];
 
   constructor(

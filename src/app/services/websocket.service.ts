@@ -44,7 +44,7 @@ export class WebsocketService {
   }
 
   loginWebSocket(name: string): Promise<any> {
-    const randomAvatar = this.randomAvatar(0, 8);
+    const randomAvatar = this.randomAvatar(0, 12);
 
     return new Promise((resolve, reject) => {
       console.log('Configuring user...');
